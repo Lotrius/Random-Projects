@@ -112,7 +112,7 @@ public class Kaprekar {
 
             // Print out largest
             case "largest":
-                System.out.println("Largest number of iterations possible: " + largest);
+                System.out.println("Largest number of iterations possible is: " + largest);
                 break;
 
             // Print out the values in itArray
