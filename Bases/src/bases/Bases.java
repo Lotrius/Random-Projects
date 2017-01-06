@@ -125,15 +125,21 @@ public class Bases {
         // Sets result to various different values depending on the command
         if (null != which) {
             switch (which) {
+                // Returns only the base
                 case "base":
                     result = base;
                     break;
+
+                // Returns only the value of the number in base 10
                 case "value":
                     for (i = 0; i < len; i++) {
                         baseTen += array[len - i - 1] * Math.pow(base, i);
                     }
                     result = baseTen;
                     break;
+
+                // Returns the value of the number in every base from the 
+                // smallest possible base to base 16
                 case "base16":
                     for (i = base; i <= 16; i++) {
                         for (j = 0; j < len; j++) {
