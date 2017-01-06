@@ -197,9 +197,13 @@ public class Kaprekar {
 
         // Creates a new array of size 4
         int[] array = new int[4];
-
+        
+        
+        // Length of string
+        int len = strdig.length();
+        
         // Stores each digit in a slot of the array
-        for (int i = 0; i < strdig.length(); i++) {
+        for (int i = 0; i < len; i++) {
             int num = Character.getNumericValue(strdig.charAt(i));
             array[i] = num;
         }
@@ -241,9 +245,12 @@ public class Kaprekar {
 
         // Creates an empty string
         String str = "";
+        
+        // Size of array
+        int len = array.length;
 
         // Concatonates each number in array to str
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < len; i++) {
             str = str.concat(Integer.toString(array[i]));
         }
 
