@@ -12,6 +12,7 @@ import java.util.*;
  */
 public class Bases {
 
+    // Conversions for any letters in the number becasue ASCII is a thing
     static final int CONVERSION_LETTER = 87;
     static final int CONVERSION_NUMBER = 48;
 
@@ -101,14 +102,8 @@ public class Bases {
         // Stores each digit in a slot of the array after converting it to the
         // proper number (0 = 0, a = 10)
         for (i = 0; i < len; i++) {
-            int charAt = (int) num.charAt(i);
-
-            if (Character.isLetter(charAt)) {
-                tmp = (charAt) - CONVERSION_LETTER;
-            } else {
-                tmp = (charAt) - CONVERSION_NUMBER;
-
-            }
+            // Saves the value of a single digit in the number
+            tmp = Integer.parseInt(Character.toString(num.charAt(i)), 16);
 
             array[i] = tmp;
 
