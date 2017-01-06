@@ -12,10 +12,6 @@ import java.util.*;
  */
 public class Bases {
 
-    // Conversions for any letters in the number becasue ASCII is a thing
-    static final int CONVERSION_LETTER = 87;
-    static final int CONVERSION_NUMBER = 48;
-
     /**
      *
      * Magic magic
