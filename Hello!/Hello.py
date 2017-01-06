@@ -53,7 +53,9 @@ while x < 5:
 print("\n")
 
 # We love functions too
-def func(num, exp):
+def func(num1, num2):
     # ** (double star) is exponent
-    print(num, "^", exp, "=", num ** exp)
-func(2,3)
+    print(num1, "^", num2, "=", num1 ** num2)
+    print(num1, "! is ", math.factorial(num1), sep='')
+    print(num2, "! is ", math.factorial(num2), sep='')
+func(2, 5)
