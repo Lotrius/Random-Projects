@@ -17,25 +17,37 @@ def random_line(file):
     rand = random.randint(1, file_len(file))
     return linecache.getline(file, rand)
 
-r = "Test file.txt"
-x = "Hangman words.txt"
-
-# Gets a random word from the files
-# lower() changes the word to lowercase
-# rstrip() removes the newline at the end
-rand_str = random_line(x).lower().rstrip()
-
 
 # Guessing the word
 def guess_word():
-    guess = input("Guess the word: ").lower()
-    if rand_str == guess:
-        print("Wow you're good")
-    else:
-        print("Wrong, the word was", rand_str.upper())
-        guess_word()
+    r = "Test file.txt"
+    x = "Hangman words.txt"
 
-hel = ''.join(['h','e','l'])
-lo = 'hel'
+    rand_str = random_line(r).lower().rstrip()
 
-print(hel == lo)
+    guess_array = []
+    for i, char in enumerate(rand_str):
+        if ' ' == char:
+            guess_array.append(' ')
+        else:
+            guess_array.append('_')
+
+    guess_limit = 100
+    word = ''.join(guess_array)
+
+    while (word != rand_str) and (guess_limit != 0):
+        print(guess_array)
+        guess = input("Guess: ").lower()
+
+        if guess in rand_str:
+            for y, ch in enumerate(guess):
+                for z, cha in enumerate(rand_str):
+                    if cha == ch:
+                        guess_array[z] = guess[y]
+            word = ''.join(guess_array)
+
+        guess_limit -= 1
+
+    print(list(rand_str), guess_limit)
+
+guess_word()
