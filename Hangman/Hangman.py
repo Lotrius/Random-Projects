@@ -20,10 +20,22 @@ def random_line(file):
 r = "Test file.txt"
 x = "Hangman words.txt"
 
-rand_str = random_line(r).lower().rstrip()
+# Gets a random word from the files
+# lower() changes the word to lowercase
+# rstrip() removes the newline at the end
+rand_str = random_line(x).lower().rstrip()
 
-guess = input("Guess the word: ").lower()
-if rand_str == guess:
-    print("Wow you're good")
-else:
-    print("Wrong, the word was", rand_str)
+
+# Guessing the word
+def guess_word():
+    guess = input("Guess the word: ").lower()
+    if rand_str == guess:
+        print("Wow you're good")
+    else:
+        print("Wrong, the word was", rand_str.upper())
+        guess_word()
+
+hel = ''.join(['h','e','l'])
+lo = 'hel'
+
+print(hel == lo)
