@@ -74,6 +74,17 @@ def guess_word():
         '''
 
     print(list(rand_str), guess_limit)
+    return rand_str
+
+
+def draw():
+    canvas = Canvas(root)
+    canvas.create_line(15, 25, 200, 25)
+    canvas.create_line(300, 35, 300, 200, dash=(4, 2))
+    canvas.create_line(55, 85, 155, 85, 105, 180, 55, 85)
+
+    canvas.pack(fill=BOTH, expand=1)
+
 
 root = Tk()
 
@@ -81,5 +92,7 @@ root.title("Hangman")
 root.geometry("500x500")
 
 Label(root, text="HANGMAN", font=("Helvetica", 50), fg="black").pack()
+draw()
+Label(root, text=random_line(x), font=("Helvetica", 50), fg="black").pack()
 
 mainloop()
