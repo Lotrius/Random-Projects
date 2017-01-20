@@ -1,5 +1,13 @@
 import random
 import linecache
+from tkinter import *
+
+
+r = "Test file.txt"
+x = "Hangman words.txt"
+
+# List of letters guessed already
+letters_guessed = []
 
 
 # Got the code from http://stackoverflow.com/questions/845058/how-to-get-line-count-cheaply-in-python
@@ -20,11 +28,13 @@ def random_line(file):
 
 # Guessing the word
 def guess_word():
-    r = "Test file.txt"
-    x = "Hangman words.txt"
+    # The limit for how many wrong guesses the user is allowed
+    guess_limit = 100
 
+    # Get a random string from the files
     rand_str = random_line(r).lower().rstrip()
 
+    # Create an array that contains the blank lines and spaces for the string
     guess_array = []
     for i, char in enumerate(rand_str):
         if ' ' == char:
@@ -32,22 +42,44 @@ def guess_word():
         else:
             guess_array.append('_')
 
-    guess_limit = 100
+    # The array as a string
     word = ''.join(guess_array)
 
     while (word != rand_str) and (guess_limit != 0):
         print(guess_array)
-        guess = input("Guess: ").lower()
+        print("Guesses remaining: ", guess_limit)
+        print("Letters guessed", letters_guessed)
 
+        guess = input("Guess a letter: ").lower()
+
+        if (len(guess) == 1) and (guess in rand_str) and (guess not in letters_guessed):
+            letters_guessed.append(guess)
+            for y, ch in enumerate(rand_str):
+                if guess == ch:
+                    guess_array[y] = ch
+                    word = ''.join(guess_array)
+        else:
+            if (guess not in letters_guessed) and (len(guess) == 1):
+                letters_guessed.append(guess)
+            guess_limit -= 1
+
+        '''
+        # One possible implementation. Allow multiple letters at once
         if guess in rand_str:
             for y, ch in enumerate(guess):
                 for z, cha in enumerate(rand_str):
                     if cha == ch:
                         guess_array[z] = guess[y]
             word = ''.join(guess_array)
-
-        guess_limit -= 1
+        '''
 
     print(list(rand_str), guess_limit)
 
-guess_word()
+root = Tk()
+
+root.title("Hangman")
+root.geometry("500x500")
+
+Label(root, text="HANGMAN", font=("Helvetica", 50), fg="black").pack()
+
+mainloop()
